@@ -1,14 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Provider } from 'react-redux'
+import store from './store/store'
+import {ThemeProvider} from 'styled-components'
+import theme from './theme'
+import Container from './components/Container/Container';
 
-
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        
-      </div>
-    );
-  }
-}
+const App = () => (
+  <Provider store={store}>
+    <ThemeProvider theme={theme}>
+      <Container/>
+    </ThemeProvider>
+  </Provider>
+);
 
 export default App;
