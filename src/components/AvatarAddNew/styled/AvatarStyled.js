@@ -2,7 +2,9 @@ import styled from 'styled-components'
 import {transitionHover} from '../../../theme/transitionHover'
 import ItemContainer from '../../TeamMemberItem/styled/ItemContainer'
 
-export default styled.div`
+export default styled.div.attrs({
+  onClick: props => props.onClick
+})`
 display: flex;
 justify-content: center;
 align-items: center;

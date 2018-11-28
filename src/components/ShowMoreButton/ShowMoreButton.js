@@ -1,11 +1,11 @@
 import React from 'react';
-
+import IconButton from '../IconButton/IconButton'
 import ShowMoreStyled from './styled/ShowMoreStyled'
 
-const ShowMoreButton = () => {
+const ShowMoreButton = ({onClick}) => {
   return (
-    <ShowMoreStyled>
-      Show more...
+    <ShowMoreStyled onClick={onClick}>
+      <IconButton/>
     </ShowMoreStyled>
   );
 };

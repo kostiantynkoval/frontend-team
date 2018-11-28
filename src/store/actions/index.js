@@ -1,6 +1,9 @@
 import membersList from '../../assets/data.json'
 import {
-  GET_MEMBERS_REQUEST, GET_MEMBERS_SUCCESS, GET_MEMBERS_FAIL
+  GET_MEMBERS_REQUEST, GET_MEMBERS_SUCCESS, GET_MEMBERS_FAIL,
+  ADD_MEMBER_REQUEST, ADD_MEMBER_SUCCESS, ADD_MEMBER_FAIL,
+  REMOVE_MEMBER_REQUEST, REMOVE_MEMBER_SUCCESS, REMOVE_MEMBER_FAIL,
+  GET_TEAM_MEMBERS_REQUEST, GET_TEAM_MEMBERS_SUCCESS
 } from './actionTypes'
 
 
@@ -14,10 +17,10 @@ export const getMembers = () => dispatch => {
     }, 800)
   })
     .then(res => {
-      if(res.data.success) {
-        dispatch(actionSucceed(GET_MEMBERS_SUCCESS, res.data))
+      if(res.success) {
+        return dispatch(actionSucceed(GET_MEMBERS_SUCCESS, res.data))
       } else {
-        dispatch(actionFailed(GET_MEMBERS_FAIL))
+        return dispatch(actionFailed(GET_MEMBERS_FAIL))
       }
     })
     .catch(err => {
@@ -26,21 +29,67 @@ export const getMembers = () => dispatch => {
     })
 }
 
-export const searchMembers = (term) => dispatch => {
-  dispatch(actionRequested(SEARCH_CLIENTS_REQUEST))
-  axios
-    .get(`${url}/persons/find${tokenString}&term=${term}&start=${start}&limit=${limit}`)
+export const addMember = (id) => (dispatch, getState) => {
+  dispatch(actionRequested(ADD_MEMBER_REQUEST))
+  const { members: { teamMemberIds } } = getState()
+  return new Promise((resolve, reject) => {
+    // simulate real request to server
+    setTimeout(() => {
+      const newArray = teamMemberIds;
+      newArray.push(id)
+      resolve({data: newArray, success: true})
+    }, 800)
+  })
     .then(res => {
-      if(res.data.success) {
-        dispatch(actionSucceed(SEARCH_CLIENTS_SUCCESS, {data: res.data.data, additional_data: res.data.additional_data,  term}))
+      if(res.success) {
+        return dispatch(actionSucceed(ADD_MEMBER_SUCCESS, res.data))
       } else {
-        dispatch(actionFailed(SEARCH_CLIENTS_FAIL))
+        return dispatch(actionFailed(ADD_MEMBER_FAIL))
       }
     })
     .catch(err => {
       console.log('getClientsRequest err', err);
-      dispatch(actionFailed(SEARCH_CLIENTS_FAIL))
+      dispatch(actionFailed(ADD_MEMBER_FAIL))
     })
+}
+
+export const removeMember = (id) => (dispatch, getState) => {
+  dispatch(actionRequested(REMOVE_MEMBER_REQUEST))
+  const { members: { teamMemberIds } } = getState()
+  return new Promise((resolve, reject) => {
+    // simulate real request to server
+    setTimeout(() => {
+      const newArray = [...teamMemberIds];
+      const index = teamMemberIds.indexOf(id)
+      newArray.splice(index,1)
+      localStorage.setItem('teamMembers', JSON.stringify(newArray))
+      resolve({data: newArray, success: true})
+    }, 800)
+  })
+    .then(res => {
+      if(res.success) {
+        return dispatch(actionSucceed(REMOVE_MEMBER_SUCCESS, res.data))
+      } else {
+        return dispatch(actionFailed(REMOVE_MEMBER_FAIL))
+      }
+    })
+    .catch(err => {
+      console.log('getClientsRequest err', err);
+      dispatch(actionFailed(REMOVE_MEMBER_FAIL))
+    })
+}
+
+export const getTeamMembers = () => (dispatch) => {
+  dispatch(actionRequested(GET_TEAM_MEMBERS_REQUEST))
+
+  const memberIdsStr = localStorage.getItem('teamMembers')
+
+  if(memberIdsStr && memberIdsStr !== '') {
+    const memberIds = JSON.parse(memberIdsStr)
+    dispatch(actionSucceed(GET_TEAM_MEMBERS_SUCCESS, memberIds))
+  } else {
+    dispatch(actionSucceed(GET_TEAM_MEMBERS_SUCCESS, []))
+  }
 }
 
 

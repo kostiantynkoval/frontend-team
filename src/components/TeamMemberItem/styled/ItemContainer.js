@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, {css} from 'styled-components'
 import {transitionHover} from '../../../theme/transitionHover'
 
 export default styled.div`
@@ -21,4 +21,11 @@ ${transitionHover()};
 @media (min-width: 1900px)  {
   width: 50%;
 }
+${props => (!props.addNew && props.required) && css
+  `span:after {
+    content: '*';
+    color: ${props => props.theme.warningColor};
+  }`
+}
+
 `
