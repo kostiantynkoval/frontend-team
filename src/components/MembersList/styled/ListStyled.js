@@ -3,7 +3,8 @@ import styled from 'styled-components'
 export default styled.div`
 display: flex;
 flex: 1;
-
+position: relative;
+z-index: 1;
 // CSS Transition Animation
 >span {
   display: flex;
@@ -32,13 +33,13 @@ flex: 1;
   opacity: 1;
   transition: opacity 200ms ease-in;
 }
-
-.memberItem-leave {
-  opacity: 1;
+.memberItem-appear {
+  opacity: 0.01;
 }
 
-.memberItem-leave.memberItem-leave-active {
-  opacity: 0.01;
+.memberItem-appear.memberItem-appear-active {
+  opacity: 1;
   transition: opacity 200ms ease-in;
 }
+
 `

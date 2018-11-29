@@ -16,6 +16,7 @@ align-items: center;
 background: white;
 border-radius: 50%;
 transform: scale(0);
+cursor: pointer;
 svg {
   fill: ${props => props.theme.warningColor};
 }

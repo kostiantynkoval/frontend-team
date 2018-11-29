@@ -4,13 +4,15 @@ import {
   SEARCH_MEMBER_REQUEST, SEARCH_MEMBER_SUCCESS, SEARCH_MEMBER_FAIL,
   ADD_MEMBER_REQUEST, ADD_MEMBER_SUCCESS, ADD_MEMBER_FAIL,
   REMOVE_MEMBER_REQUEST, REMOVE_MEMBER_SUCCESS, REMOVE_MEMBER_FAIL,
+  OPEN_SEARCH_BAR, CLOSE_SEARCH_BAR
 } from '../actions/actionTypes'
 
 const initialState = {
   list: [],
   searchTerm: null,
   isLoading: false,
-  teamMemberIds: []
+  teamMemberIds: [],
+  isSearchBarOpened: false
 }
 
 const membersReducer = (state = initialState, action) => {
@@ -36,18 +38,18 @@ const membersReducer = (state = initialState, action) => {
     case GET_TEAM_MEMBERS_REQUEST:
       return {
         ...state,
-        isLoading: true
+        //isLoading: true
       }
     case GET_TEAM_MEMBERS_SUCCESS:
       return {
         ...state,
-        isLoading: false,
+        //isLoading: false,
         teamMemberIds: action.payload
       }
     case GET_TEAM_MEMBERS_FAIL:
       return {
         ...state,
-        isLoading: false
+        //isLoading: false
       }
     case ADD_MEMBER_REQUEST:
       return {
@@ -95,6 +97,16 @@ const membersReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false
+      }
+    case OPEN_SEARCH_BAR:
+      return {
+        ...state,
+        isSearchBarOpened: true
+      }
+    case CLOSE_SEARCH_BAR:
+      return {
+        ...state,
+        isSearchBarOpened: false
       }
     default:
       return state

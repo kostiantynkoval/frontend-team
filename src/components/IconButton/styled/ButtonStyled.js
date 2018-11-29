@@ -8,7 +8,7 @@ justify-content: flex-end;
 align-items: center;
 padding: 8px;
 position: ${props => props.withTransformation ? 'absolute' : 'relative'};
-
+cursor: pointer;
 ${transitionHover()}
 
 h2 {

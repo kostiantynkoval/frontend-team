@@ -15,6 +15,8 @@ height: 40px;
 background: ${props => props.theme.addBtnBgColor};
 border: 2px solid ${props => props.theme.addBtnBgColor};
 outline: none;
+cursor: pointer;
+z-index: 0;
 ${transitionHover()}
 &:hover {
   background: white;

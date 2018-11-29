@@ -3,7 +3,8 @@ import {
   GET_MEMBERS_REQUEST, GET_MEMBERS_SUCCESS, GET_MEMBERS_FAIL,
   ADD_MEMBER_REQUEST, ADD_MEMBER_SUCCESS, ADD_MEMBER_FAIL,
   REMOVE_MEMBER_REQUEST, REMOVE_MEMBER_SUCCESS, REMOVE_MEMBER_FAIL,
-  GET_TEAM_MEMBERS_REQUEST, GET_TEAM_MEMBERS_SUCCESS
+  GET_TEAM_MEMBERS_REQUEST, GET_TEAM_MEMBERS_SUCCESS,
+  OPEN_SEARCH_BAR, CLOSE_SEARCH_BAR
 } from './actionTypes'
 
 
@@ -91,6 +92,9 @@ export const getTeamMembers = () => (dispatch) => {
     dispatch(actionSucceed(GET_TEAM_MEMBERS_SUCCESS, []))
   }
 }
+
+export const openSearchBar = () => actionSucceed(OPEN_SEARCH_BAR)
+export const closeSearchBar = () => actionSucceed(CLOSE_SEARCH_BAR)
 
 
 // Actions

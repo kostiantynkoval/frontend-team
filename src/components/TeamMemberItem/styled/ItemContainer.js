@@ -6,6 +6,7 @@ display: block;
 width: 100%;
 background: transparent;
 ${transitionHover()};
+${props => props.addNew && 'cursor: pointer'}
 &:hover {
   background: ${props => props.theme.addBtnBgColor};
 }

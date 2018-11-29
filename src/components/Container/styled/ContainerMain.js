@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 
 export default styled.div`
-display: block;
-width: 100%;
-max-width: 770px;
-margin: 0 auto;
+display: flex;
+flex-flow: column nowrap;
+flex: 1;
 padding: ${props => props.theme.grid}px;
+border: 1px solid ${props => props.theme.wrapperBorderColor};
 border-top: 2px solid ${props => props.theme.borderColor};
 box-sizing: border-box;
 font-family: 'Open Sans';
