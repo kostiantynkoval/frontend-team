@@ -1,5 +1,5 @@
 import React from 'react'
-import Wrapper from '../Wrapper/Wrapper'
+import Wrapper from '../Wrapper'
 import ContainerMain from './styled/ContainerMain'
 
 const Container = () => {

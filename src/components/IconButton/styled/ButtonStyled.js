@@ -16,11 +16,9 @@ h2 {
   margin-right: 8px;
 }
 
-${props => props.withTransformation && css
-  `
+${props => props.withTransformation && css`
     top: -10px;
     right: 0;
-
     @media (min-width: 320px)  {
       h2 {
         display: none;

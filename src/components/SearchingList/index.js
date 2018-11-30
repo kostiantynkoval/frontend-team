@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import theme from '../../theme'
 import {connect} from 'react-redux'
-import SearchingListItem from '../SearchingListItem/SearchingListItem'
+import SearchingListItem from '../SearchingListItem'
 import SearchingListStyled from './styled/SearchingListStyled'
 
 const NotFound = () => (
@@ -25,9 +25,7 @@ class SearchingList extends Component {
     return {showingItems}
   }
 
-
   render() {
-    console.log(this.state)
     return (
       <SearchingListStyled>
         {

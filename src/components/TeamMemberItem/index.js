@@ -5,8 +5,8 @@ import {openSearchBar} from '../../store/actions'
 import { withStyles } from '@material-ui/core/styles';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import AvatarAddNew from '../AvatarAddNew/AvatarAddNew';
-import AvatarPhoto from '../AvatarPhoto/AvatarPhoto';
+import AvatarAddNew from '../AvatarAddNew';
+import AvatarPhoto from '../AvatarPhoto';
 import ItemContainer from './styled/ItemContainer'
 
 
@@ -24,15 +24,15 @@ class TeamMemberItem extends Component {
     return (
       <ItemContainer addNew={addNew} onClick={this.openSearchBar} required={required} >
         <ListItemModified>
-          { addNew ? <AvatarAddNew />: <AvatarPhoto id={id} src={require(`../../assets/${source}`)} /> }
-          { addNew ? <ListItemTextNewMember primary={primary} /> : <ListItemTextExisting primary={primary} secondary={secondary} />}
+          { addNew ? <AvatarAddNew /> : <AvatarPhoto id={id} src={require(`../../assets/${source}`)} /> }
+          { addNew ? <ListItemTextAddNew primary={primary} /> : <ListItemTextExisting primary={primary} secondary={secondary} />}
         </ListItemModified>
       </ItemContainer>
     )
   }
 }
 
-const ListItemTextNewMember = withStyles({
+const ListItemTextAddNew = withStyles({
   root: {
     padding: `0 ${theme.scaleMid}px`
   },
@@ -48,7 +48,7 @@ const ListItemTextNewMember = withStyles({
 
 const ListItemTextExisting = withStyles({
   root: {
-    padding: `0 ${theme.scaleMid}px`
+    padding: `0 ${theme.scaleMid}px`,
   },
   primary: {
     color: theme.defaultFontColor,
@@ -64,11 +64,21 @@ const ListItemTextExisting = withStyles({
   }
 })(ListItemText)
 
-const ListItemModified = withStyles({
+// with uiTheme it is possible to implement media queries
+const ListItemModified = withStyles(uiTheme => ({
   root: {
-    padding: `${theme.scaleBig}px`
+    padding: `${theme.scaleMid}px ${theme.scaleMid}px`,
+    [uiTheme.breakpoints.up(768)]: {
+      padding: `${theme.scaleBig}px ${theme.scaleMid}px`,
+    },
+    [uiTheme.breakpoints.up(1300)]: {
+      padding: `${theme.scaleMid}px ${theme.scaleMid}px`,
+    },
+    [uiTheme.breakpoints.up(1900)]: {
+      padding: `${theme.scaleBig}px ${theme.scaleMid}px`,
+    },
   }
-})(ListItem)
+}))(ListItem)
 
 export default connect(
   null,

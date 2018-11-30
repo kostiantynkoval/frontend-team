@@ -28,18 +28,32 @@ z-index: 1;
 .memberItem-enter {
   opacity: 0.01;
 }
-
 .memberItem-enter.memberItem-enter-active {
   opacity: 1;
   transition: opacity 200ms ease-in;
 }
-.memberItem-appear {
+
+.memberItem-leave {
+  opacity: 1;
+}
+.memberItem-leave.memberItem-leave-active {
   opacity: 0.01;
+  transition: opacity 200ms ease-in;
 }
 
-.memberItem-appear.memberItem-appear-active {
+.searchItem-enter {
+  opacity: 0.01;
+}
+.searchItem-enter.searchItem-enter-active {
   opacity: 1;
   transition: opacity 200ms ease-in;
 }
 
+.searchItem-leave {
+  opacity: 1;
+}
+.searchItem-leave.searchItem-leave-active {
+  opacity: 0.01;
+  transition: opacity 200ms ease-in;
+}
 `

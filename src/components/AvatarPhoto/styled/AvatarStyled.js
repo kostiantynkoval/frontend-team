@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import {transitionHover} from '../../../theme/transitionHover'
 
-
 export default styled.div`
 display: flex;
 justify-content: center;

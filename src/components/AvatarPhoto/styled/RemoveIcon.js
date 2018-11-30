@@ -2,9 +2,9 @@ import styled from 'styled-components'
 import {transitionHover} from '../../../theme/transitionHover'
 import ItemContainer from '../../TeamMemberItem/styled/ItemContainer'
 
-export default styled.div.attrs({
-  onClick: props => props.onClick
-})`
+export default styled.div.attrs( props => ({
+  onClick: props.onClick
+}))`
 position: absolute;
 top: 0;
 bottom: 0;

@@ -3,7 +3,7 @@ import { Provider } from 'react-redux'
 import store from './store/store'
 import {ThemeProvider} from 'styled-components'
 import theme from './theme'
-import Container from './components/Container/Container';
+import Container from './components/Container/index';
 
 const App = () => (
   <Provider store={store}>

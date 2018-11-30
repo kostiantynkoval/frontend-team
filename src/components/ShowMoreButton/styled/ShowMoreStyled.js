@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 import {transitionHover} from '../../../theme/transitionHover'
 
-export default styled.button.attrs({
-  onClick: props => props.onClick
-})`
+export default styled.button.attrs( props => ({
+  onClick: props.onClick
+}))`
 display: flex;
 flex: 1;
 width: 100%;

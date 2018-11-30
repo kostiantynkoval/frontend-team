@@ -22,8 +22,8 @@ ${props => props.addNew && 'cursor: pointer'}
 @media (min-width: 1900px)  {
   width: 50%;
 }
-${props => (!props.addNew && props.required) && css
-  `span:after {
+${props => (!props.addNew && props.required) && css`
+  span:after {
     content: '*';
     color: ${props => props.theme.warningColor};
   }`

@@ -21,5 +21,4 @@ font-family: 'Open Sans';
 @media (min-width: 1900px)  {
   max-width: 100%;
 }
-
 `

@@ -2,11 +2,11 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {getMembers, getTeamMembers} from '../../store/actions'
 import { CSSTransitionGroup } from 'react-transition-group'
-import Header from '../Header/Header'
-import MembersList from '../MembersList/MembersList'
-import ShowMoreButton from '../ShowMoreButton/ShowMoreButton'
+import Header from '../Header'
+import MembersList from '../MembersList'
+import ShowMoreButton from '../ShowMoreButton'
+import Loader from '../Loader'
 import WrapperStyled from './styled/WrapperStyled'
-import Loader from '../Loader/Loader'
 
 class Wrapper extends Component {
 
@@ -17,14 +17,13 @@ class Wrapper extends Component {
   }
 
   componentDidMount() {
-    //localStorage.setItem('teamMembers', '[1,2,3,4,5,6,7,8,9,10]')
+    window.__MUI_USE_NEXT_TYPOGRAPHY_VARIANTS__ = true;
     this.props.getMembers()
     this.props.getTeamMembers()
   }
 
   static getDerivedStateFromProps(props, state) {
-
-    if(props.teamMemberIds.length && props.list.length) {
+    if(props.teamMemberIds.length || props.list.length) {
       const filtered = props.list.filter(item => props.teamMemberIds.includes(item.id))
       return {
         ...state,
@@ -41,7 +40,7 @@ class Wrapper extends Component {
   }
 
   render() {
-    const {isLoading} = this.props
+    const {isLoading, gettingTeamMembers} = this.props
     const {memberList, isShort} = this.state
     return (
       <WrapperStyled>
@@ -54,10 +53,9 @@ class Wrapper extends Component {
           transitionName="loader"
           transitionEnterTimeout={150}
           transitionLeave={false}
-          transitionLeaveTimeout={30}
         >
         {
-          isLoading && <Loader/>
+          (isLoading || gettingTeamMembers) && <Loader/>
         }
         </CSSTransitionGroup>
       </WrapperStyled>
@@ -70,6 +68,7 @@ export default connect(
     list: state.members.list,
     teamMemberIds: state.members.teamMemberIds,
     isLoading: state.members.isLoading,
+    gettingTeamMembers: state.members.gettingTeamMembers,
   }),
   dispatch => ({
     getMembers: () => dispatch(getMembers()),

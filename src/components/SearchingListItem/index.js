@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {addMember, closeSearchBar} from '../../store/actions/index'
+import {addMember, closeSearchBar} from '../../store/actions'
+import theme from '../../theme'
 import SearchingListItemStyled from './styled/SearchingListItemStyled'
 import { withStyles } from '@material-ui/core/styles'
 import ListItem from '@material-ui/core/ListItem'
@@ -40,10 +41,10 @@ const styles = {
     height: 30,
   },
   listItem: {
-    padding: '8px 10px'
+    padding: `${theme.scaleSmall}px ${theme.scaleMid}px`
   },
   listItemText: {
-    padding: '0 10px'
+    padding: `0 ${theme.scaleMid}px`
   }
 };
 

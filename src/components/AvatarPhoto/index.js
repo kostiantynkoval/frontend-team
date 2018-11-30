@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux'
 import {removeMember} from '../../store/actions'
+import TooltipArrow from '../TooltipArrow'
 import AvatarStyled from './styled/AvatarStyled'
 import Image from './styled/Image'
 import RemoveIcon from './styled/RemoveIcon'
-import TooltipArrow from '../TooltipArrow/TooltipArrow'
 
 
 class AvatarPhoto extends Component {
@@ -15,11 +15,10 @@ class AvatarPhoto extends Component {
   }
 
   render() {
-    const {src} = this.props
     return (
       <TooltipArrow tooltipTitle="Remove user">
         <AvatarStyled>
-          <Image src={src} alt=""/>
+          <Image src={this.props.src} alt=""/>
           <RemoveIcon onClick={this.remove}>
             <svg width="24" height="24" viewBox="0 0 24 24">
               <path fill="none" d="M0 0h24v24H0V0z"/>
