@@ -10,7 +10,7 @@ const themeDefault = {
   loaderBgColor: 'rgba(0,0,0,0.5)',
   addBtnBgColor: '#e2f4ea',
   warningColor: '#ff9224',
-  defaultFontColor: '#18332f',
+  defaultFontColor: '#2d4642',
   hintMainFontColor: '#35928f',
   hintSecondaryFontColor: '#3a514e',
   titleFontSize: 15,

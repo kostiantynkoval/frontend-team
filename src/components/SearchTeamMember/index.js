@@ -60,11 +60,11 @@ const styles = {
     },
   },
   input: {
-    color: theme.addTextColor,
-    padding: `${theme.scaleBig}px ${theme.scaleMid}px`
+    color: theme.defaultFontColor,
+    paddingLeft: `${theme.scaleMid}px`,
   },
   formControl: {
-    padding: `0 ${theme.scaleMid}px`
+    padding: `${theme.scaleBig}px ${theme.scaleMid}px`
   },
   adornment: {
     marginRight: `${theme.scaleMid}px`
