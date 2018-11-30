@@ -89,8 +89,6 @@ export const getTeamMembers = () => (dispatch) => {
   return new Promise(resolve => {
     const memberIdsStr = localStorage.getItem('teamMembers')
 
-    console.log('memberIdsStr', memberIdsStr)
-
     setTimeout(() => {
       if(memberIdsStr && memberIdsStr !== '') {
         const memberIds = JSON.parse(memberIdsStr)
