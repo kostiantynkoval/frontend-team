@@ -17,7 +17,7 @@ const MembersList = ({items, isSearchBarOpened, closeSearchBar}) => {
           >
           <TeamMemberItem addNew primary="Add team member to this test"/>
           {
-            items.map((item,i) => <TeamMemberItem key={item.id} required={i===1} primary={item.role} secondary={item.username} id={item.id} source={item.picture}/>)
+            items.map((item,i) => <TeamMemberItem key={item.id} required={item.role==='External'} primary={item.role} secondary={item.username} id={item.id} source={item.picture}/>)
           }
           {
             isSearchBarOpened && <ClickableLayout onClick={() => closeSearchBar()} />

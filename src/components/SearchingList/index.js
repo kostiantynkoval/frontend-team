@@ -5,7 +5,7 @@ import SearchingListItem from '../SearchingListItem'
 import SearchingListStyled from './styled/SearchingListStyled'
 
 const NotFound = () => (
-  <div style={{display: 'flex', flexFlow: 'column nowrap', alignItems: 'center', paddingBottom: `${theme.grid}px`, paddingTop: `${theme.grid/2}px`}}>
+  <div style={{display: 'flex', flexFlow: 'column nowrap', alignItems: 'center', paddingBottom: `${theme.grid * 1.5}px`}}>
     <span style={{color: theme.addTextColor, fontWeight: 'bold'}}>Team member not found.</span>
     <span style={{color: theme.defaultFontColor, fontSize: theme.tooltipFontSize}}>Maybe she/he is not yet in your <span style={{borderBottom: `1px solid ${theme.warningColor}`}}>team?</span></span>
   </div>
